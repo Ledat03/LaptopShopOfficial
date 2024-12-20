@@ -1,6 +1,7 @@
 package vn.hoidanit.laptopshop.service;
 
 import org.springframework.stereotype.Service;
+import vn.hoidanit.laptopshop.domain.Role;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 
@@ -31,4 +32,8 @@ public class MyService {
     }
 
     public User DeleteUser(User user) { return userRepository.deleteById(user.getId()); }
+
+    public Role SaveRole(Role role) {
+        return userRepository.save(role);
+    }
 }

@@ -1,11 +1,10 @@
-package vn.hoidanit.laptopshop.controller;
+package vn.hoidanit.laptopshop.controller.Admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.support.BindingAwareConcurrentModel;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.MyService;
 
 import java.util.List;
@@ -40,17 +39,18 @@ public class UserController {
         return "admin/user/changeInfo";
     }
 
-    @RequestMapping(value = "/admin/user/create", method = RequestMethod.GET)
-    public String getUserPage(){
+    @GetMapping(value = "/admin/user/create")
+    public String getUserPage(Model model){
+        model.addAttribute("user", new User());
         return "admin/user/create";
     }
 
-    @RequestMapping(value = "/admin/user/confirmation", method = RequestMethod.POST)
-    public String UserUpdate(User user, Model model){
+    @PostMapping(value = "/admin/user/confirmation")
+    public String UserCreate(@RequestParam("FileAnh") MultipartFile File,@ModelAttribute User user, Model model){
         System.out.println(user.toString());
+        myService.SaveRole(user.getRole());
         myService.SaveUser(user);
         model.addAttribute("UserInfo", user.toString());
-        model.addAttribute("Confirm","Thêm thông tin thành công!");
         return "redirect:/admin/user";
     }
 
