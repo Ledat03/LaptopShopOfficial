@@ -1,10 +1,9 @@
-package vn.hoidanit.laptopshop.repository;
+package vn.project.laptopshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import vn.hoidanit.laptopshop.domain.Role;
-import vn.hoidanit.laptopshop.domain.User;
+import vn.project.laptopshop.domain.Role;
+import vn.project.laptopshop.domain.User;
 
 import java.util.List;
 

@@ -1,8 +1,6 @@
-package vn.hoidanit.laptopshop.domain;
+package vn.project.laptopshop.domain;
 
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table(name = "products")

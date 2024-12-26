@@ -1,8 +1,8 @@
-package vn.hoidanit.laptopshop.controller.Admin;
+package vn.project.laptopshop.controller.Admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import vn.hoidanit.laptopshop.service.MyService;
+import vn.project.laptopshop.service.MyService;
 
 @Controller
 public class AdminController {

@@ -34,7 +34,7 @@
     <jsp:include page="../layout/sidebar.jsp"/>
     <div id="layoutSidenav_content">
         <main>
-            <%--@elvariable id="user" type="vn.hoidanit.laptopshop.domain.User"--%>
+            <%--@elvariable id="user" type="vn.project.laptopshop.domain.User"--%>
             <form:form action="/admin/user/confirmation" method="post" class="row" modelAttribute="user" enctype="multipart/form-data">
                 <div class="container mt-5">
                     <div class="col-md-6 col-12 mx-auto">

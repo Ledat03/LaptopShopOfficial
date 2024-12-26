@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.controller.Admin;
+package vn.project.laptopshop.controller.Admin;
 
 
 import org.springframework.stereotype.Controller;

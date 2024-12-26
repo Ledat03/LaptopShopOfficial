@@ -1,11 +1,11 @@
-package vn.hoidanit.laptopshop.controller.Admin;
+package vn.project.laptopshop.controller.Admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import vn.hoidanit.laptopshop.domain.User;
-import vn.hoidanit.laptopshop.service.MyService;
+import vn.project.laptopshop.domain.User;
+import vn.project.laptopshop.service.MyService;
 
 import java.util.List;
 
@@ -28,6 +28,7 @@ public class UserController {
     @RequestMapping(value ="/admin/user", method = RequestMethod.GET)
         public String InfoUserPage(Model model) {
         List<User> InforUser = myService.findAll();
+
         model.addAttribute("InfoUser", InforUser);
         return "admin/user/information";
         }
