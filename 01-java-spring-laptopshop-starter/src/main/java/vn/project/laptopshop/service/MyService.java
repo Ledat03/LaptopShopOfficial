@@ -31,7 +31,7 @@ public class MyService {
         return userRepository.save(user);
     }
 
-    public User DeleteUser(User user) { return userRepository.deleteById(user.getId()); }
+    public User DeleteUser(User user) { return userRepository.deleteById(user.getUser_id()); }
 
     public Role SaveRole(Role role) {
         return userRepository.save(role);

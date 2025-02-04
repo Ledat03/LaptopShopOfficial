@@ -15,39 +15,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>User Info</title>
 </head>
-<body>
+<body class="bg-dark text-light">
 <jsp:include page="../layout/header.jsp"/>
 <div id="layoutSidenav">
     <jsp:include page="../layout/sidebar.jsp"/>
     <div id="layoutSidenav_content">
         <main>
             <% User InfoUser = (User) request.getAttribute("InfoUser");%>
-            <h1 style="text-align: center;color: gray">User Infomation</h1>
+            <h1 class="text-light" style="text-align: center;color: gray">User Infomation</h1>
             <div class="container col-6 col-12 mt-5">
                 <table class="table table-bordered">
                     <thead>
-                    <th>ID</th>
-                    <th>Gmail</th>
-                    <th>Password</th>
-                    <th>Full Name</th>
-                    <th>Phone</th>
-                    <th>Address</th>
+                    <th class="bg-dark text-light">ID</th>
+                    <th class="bg-dark text-light">Gmail</th>
+                    <th class="bg-dark text-light">Password</th>
+                    <th class="bg-dark text-light">Full Name</th>
+                    <th class="bg-dark text-light">Phone</th>
+                    <th class="bg-dark text-light">Address</th>
                     </thead>
                     <tbody>
                     <tr>
-                        <td><%= InfoUser.getId() %></td>
-                        <td><%= InfoUser.getEmail() %></td>
-                        <td><%= InfoUser.getPassword() %></td>
-                        <td><%= InfoUser.getFullName() %></td>
-                        <td><%= InfoUser.getPhone() %></td>
-                        <td><%= InfoUser.getAddress() %></td>
+                        <td class="bg-dark text-light"><%= InfoUser.getUser_id() %></td>
+                        <td class="bg-dark text-light"><%= InfoUser.getEmail() %></td>
+                        <td class="bg-dark text-light"><%= InfoUser.getPassword() %></td>
+                        <td class="bg-dark text-light"><%= InfoUser.getFullName() %></td>
+                        <td class="bg-dark text-light"><%= InfoUser.getPhone() %></td>
+                        <td class="bg-dark text-light"><%= InfoUser.getAddress() %></td>
                     </tr>
                     </tbody>
                 </table>
-                <a href="/admin/user"><button type="button" class="btn btn-primary">Back</button></a>
+                <a href="/admin/user"><button type="button" class="btn btn-warning">Back</button></a>
             </div>
         </main>
         <jsp:include page="../layout/footer.jsp"/>
+        
     </div>
 
 </div>

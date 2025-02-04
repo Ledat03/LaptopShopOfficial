@@ -15,12 +15,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>User Info</title>
 </head>
-<body>
+<body class="bg-dark text-light">
 <jsp:include page="../layout/header.jsp"/>
 <div id="layoutSidenav">
     <jsp:include page="../layout/sidebar.jsp"/>
     <div id="layoutSidenav_content">
-        <main>
+        <main >
             <%--@elvariable id="infouser" type="vn.project.laptopshop.domain.User"--%>
             <form:form action="/admin/user/updateconfirm" method="post" modelAttribute="infouser">
                 <div class="container mt-5">
@@ -29,7 +29,7 @@
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         <div class="row mb-3" style="display: none">
                             <label>ID:</label>
-                            <form:input type="text" path="id" class="form-control" />
+                            <form:input type="text" path="user_id" class="form-control" />
                         </div>
                         <div class="row mb-3">
                             <label>Email:</label>
@@ -48,6 +48,7 @@
                             <form:input type="text" path="address" class="form-control"/>
                         </div>
                         <button type="submit" class="btn btn-warning" value="Submit">Change</button>
+                        <a href="/admin/user"><button class="btn btn-warning">Cancel</button></a>
                     </div>
                 </div>
             </form:form>

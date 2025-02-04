@@ -1,10 +1,12 @@
 package vn.project.laptopshop.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 @Table(name ="roles")
 public class Role {
     @Id
@@ -20,34 +22,5 @@ public class Role {
         this.role_id = id;
         this.rolename = rolename;
         this.description = description;
-    }
-
-    public long getId() {
-        return role_id;
-    }
-
-    public void setId(long id) {
-        this.role_id = id;
-    }
-
-    public String getRolename() {
-        return rolename;
-    }
-
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Role [id=" + role_id + ", rolename=" + rolename + ", description=" + description + "]";
     }
 }

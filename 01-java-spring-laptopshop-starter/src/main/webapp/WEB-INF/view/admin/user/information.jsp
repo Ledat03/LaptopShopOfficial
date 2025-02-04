@@ -16,45 +16,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>User Info</title>
 </head>
-<body>
+<body class="bg-dark">
 <jsp:include page="../layout/header.jsp"/>
 <div id="layoutSidenav">
     <jsp:include page="../layout/sidebar.jsp"/>
     <div id="layoutSidenav_content">
         <main>
-            <div class="col-md-6 col-12 mx-auto mt-5">
+            <div class="col-md-6 col-12 mx-auto mt-5" >
                 <div class="d-flex justify-content-between " >
-                    <h1>User Information</h1>
+                    <h1 class="text-light">User Information</h1>
                     <form action="/admin/user/create",method = "get">
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-warning">Create</button>
                     </form>
                 </div>
                 <table class="table table-bordered">
-                    <thead>
-                    <th scope="col">ID</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Action</th>
+                    <thead >
+                    <th class="bg-dark text-light" scope="col">ID</th>
+                    <th class="bg-dark text-light" scope="col">Email</th>
+                    <th class="bg-dark text-light" scope="col">Full Name</th>
+                    <th class="bg-dark text-light" scope="col">Action</th>
                     </thead>
                     <tbody>
 
                     <% List<User> Info = (List<User>) request.getAttribute("InfoUser");
                         for (User InfoU : Info){
                     %>
-                    <tr>
-                        <td><p><%= InfoU.getId()%></p></td>
-                        <td><p><%= InfoU.getEmail()%></p></td>
-                        <td><p><%= InfoU.getFullName()%></p></td>
-                        <td class="">
+                    <tr >
+                        <td class="bg-dark text-light"><p><%= InfoU.getUser_id()%></p></td>
+                        <td class="bg-dark text-light"><p><%= InfoU.getEmail()%></p></td>
+                        <td class="bg-dark text-light"<p><%= InfoU.getFullName()%></p></td>
+                        <td class="bg-dark">
                             <div class="btn-group mx-5">
-                                <a href="/admin/user/change/<%= InfoU.getId() %>"><button class="btn btn-success mx-3">Change</button></a>
-                                <a href="/admin/user/delete/<%= InfoU.getId() %>"><button class="btn btn-danger mx-3">Delete</button></a>
-                                <a href="/admin/user/infoUser/<%= InfoU.getId() %>"><button class="btn btn-primary mx-3">Information</button></a>
+                                <a href="/admin/user/change/<%= InfoU.getUser_id() %>"><button class="btn btn-warning mx-3">Change</button></a>
+                                <a href="/admin/user/delete/<%= InfoU.getUser_id() %>"><button class="btn btn-warning mx-3">Delete</button></a>
+                                <a href="/admin/user/infoUser/<%= InfoU.getUser_id() %>"><button class="btn btn-warning mx-3">Information</button></a>
                             </div>
                         </td>
                     </tr>
                     <% } %>
-
                     </tbody>
                 </table>
             </div>

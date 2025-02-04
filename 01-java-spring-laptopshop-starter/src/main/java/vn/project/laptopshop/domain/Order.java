@@ -1,10 +1,12 @@
 package vn.project.laptopshop.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 @Table(name = "orders")
 public class Order {
     @Id
@@ -20,33 +22,9 @@ public class Order {
 
     public Order(){}
 
-    public Order(long orderid,Double totalprice) {
+    public Order(long orderid,User userid,Double totalprice) {
         this.orderid = orderid;
-//        this.userid = userid;
+        this.user = userid;
         this.totalprice = totalprice;
     }
-
-    public long getOrderid() {
-        return orderid;
     }
-
-    public void setOrderid(long orderid) {
-        this.orderid = orderid;
-    }
-
-//    public long getUserid() {
-//        return userid;
-//    }
-//
-//    public void setUserid(long userid) {
-//        this.userid = userid;
-//    }
-
-    public Double getTotalprice() {
-        return totalprice;
-    }
-
-    public void setTotalprice(Double totalprice) {
-        this.totalprice = totalprice;
-    }
-}
