@@ -26,9 +26,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Order> orders;
 
-    public List<Order> getOrders() {
-        return orders;
-    }
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
 
     public User() {
         user_id = 0;

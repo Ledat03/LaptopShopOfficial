@@ -1,6 +1,11 @@
+<%@ page import="vn.project.laptopshop.domain.CartDetail" %>
+<%@ page import="java.util.List" %>
+<%@ page import="vn.project.laptopshop.domain.Product" %>
 <!DOCTYPE html>
 <html>
 <head>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <title>Ministore</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +15,27 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/HomePage/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/HomePage/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/HomePage/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/HomePage/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/js" href="/js/HomePage/modernizr.js">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/js/HomePage/modernizr.js"></script>
+    <script src="/js/HomePage/jquery-1.11.0.min.js"></script>
+    <script src="/js/HomePage/Detail/plugins.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/HomePage/bootstrap.bundle.min.js"></script>
+    <script src="/js/HomePage/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/HomePage/plugins.js"></script>
+    <script type="text/javascript" src="/js/HomePage/script.js"></script>
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -87,7 +106,28 @@
     <symbol xmlns="http://www.w3.org/2000/svg" id="navbar-icon" viewBox="0 0 16 16">
         <path d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
     </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="shopping-cart" viewBox="0 0 24 24" fill="none">
+        <path
+                d="M21 4H2V6H4.3L7.582 15.025C7.79362 15.6029 8.1773 16.1021 8.68134 16.4552C9.18539 16.8083 9.78556 16.9985 10.401 17H19V15H10.401C9.982 15 9.604 14.735 9.461 14.342L8.973 13H18.246C19.136 13 19.926 12.402 20.169 11.549L21.962 5.275C22.0039 5.12615 22.0109 4.96962 21.9823 4.81763C21.9537 4.66565 21.8904 4.52234 21.7973 4.39889C21.7041 4.27544 21.5837 4.1752 21.4454 4.106C21.3071 4.0368 21.1546 4.00053 21 4ZM18.246 11H8.246L6.428 6H19.675L18.246 11Z"
+                fill="black" />
+        <path
+                d="M10.5 21C11.3284 21 12 20.3284 12 19.5C12 18.6716 11.3284 18 10.5 18C9.67157 18 9 18.6716 9 19.5C9 20.3284 9.67157 21 10.5 21Z"
+                fill="black" />
+        <path
+                d="M16.5 21C17.3284 21 18 20.3284 18 19.5C18 18.6716 17.3284 18 16.5 18C15.6716 18 15 18.6716 15 19.5C15 20.3284 15.6716 21 16.5 21Z"
+                fill="black" />
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 12.998H5v-2h14z" />
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="dropdown" viewBox="0 0 24 24">
+        <path fill="currentColor" d="m7 10l5 5l5-5H7Z" />
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+    </symbol>
 </svg>
+
 <div class="search-popup">
     <div class="search-popup-container">
 
@@ -124,12 +164,11 @@
 
     </div>
 </div>
-
 <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
     <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <img src="${pageContext.request.contextPath}/images/HomePage/main-logo.png" class="logo">
+                <img src=" /images/HomePage/main-logo.png" class="logo">
             </a>
             <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <svg class="navbar-icon">
@@ -139,59 +178,12 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
                 <div class="offcanvas-header px-4 pb-0">
                     <a class="navbar-brand" href="index.html">
-                        <img src="${pageContext.request.contextPath}/images/HomePage/main-logo.png" class="logo">
+                        <img src="/images/HomePage/main-logo.png" class="logo">
                     </a>
                     <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul id="navbar" class="navbar-nav text-uppercase justify-content-end align-items-center flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link me-4 active" href="#billboard">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#company-services">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#mobile-products">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#smart-watches">Watches</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#yearly-sale">Sale</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-4" href="#latest-blog">Blog</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pages</a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="about.html" class="dropdown-item">About</a>
-                                </li>
-                                <li>
-                                    <a href="blog.html" class="dropdown-item">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="shop.html" class="dropdown-item">Shop</a>
-                                </li>
-                                <li>
-                                    <a href="cart.html" class="dropdown-item">Cart</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </li>
-                                <li>
-                                    <a href="single-post.html" class="dropdown-item">Single Post</a>
-                                </li>
-                                <li>
-                                    <a href="single-product.html" class="dropdown-item">Single Product</a>
-                                </li>
-                                <li>
-                                    <a href="contact.html" class="dropdown-item">Contact</a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="nav-item">
                             <div class="user-items ps-5">
                                 <ul class="d-flex justify-content-end list-unstyled">
@@ -202,20 +194,126 @@
                                             </svg>
                                         </a>
                                     </li>
+<%--                                    data-bs-toggle="modal" data-bs-target="#modallogin"--%>
+                                    <div class="pe-3">
+                                        <c:if test="${not empty pageContext.request.userPrincipal}">
+                                            <div class="dropdown my-auto">
+                                                    <i class="fas fa-user fa-2x dropdown" role="button" id="dropdownMenuLink"
+                                                       data-bs-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown"
+                                                       aria-expanded="false">
+                                                    </i>
+                                                <ul class="dropdown-menu dropdown-menu-end p-4" arialabelledby="dropdownMenuLink">
+                                                    <li class="d-flex align-items-center flex-column" style="min-width: 300px;">
+                                                        <img style="width: 150px; height: 150px; border-radius: 50%;"
+                                                             src="images/avatar/${sessionScope.Avatar}"/>
+                                                        <div class="text-center my-3">
+                                                            <c:out value="${pageContext.request.userPrincipal.name}"/>
+                                                        </div>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#">Setting</a></li>
+                                                    <li><a class="dropdown-item" href="#">History</a></li>
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
+                                                    <li>
+                                                        <form action="/logout" method="POST">
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                                            <button class="dropdown-item" type="submit">Log Out</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${empty pageContext.request.userPrincipal}">
+                                            <li class="pe-3">
+                                                <a href="/login">
+                                                    <svg class="user" width="32" height="32" fill="currentColor">
+                                                        <use xlink:href="#user"></use>
+                                                    </svg>
+                                                </a>
+                                            </li>
+                                        </c:if>
+                                    </div>
                                     <li class="pe-3">
-                                        <a href="/admin">
-                                            <svg class="user">
-                                                <use xlink:href="#user"></use>
+<%--                                        data-bs-toggle="modal" data-bs-target="#modallong" class="border-0"--%>
+                                        <a href="/View-Cart" >
+                                            <svg class="shopping-cart" width="25" height="25">
+                                                <use xlink:href="#shopping-cart"></use>
                                             </svg>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="cart.html">
-                                            <svg class="cart">
-                                                <use xlink:href="#cart"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+<%--                                    <div class="modal fade" id="modallong" tabindex="-1" aria-modal="true" role="dialog">--%>
+<%--                                        <div class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered">--%>
+<%--                                            <div class="modal-content">--%>
+<%--                                                <div class="modal-header">--%>
+<%--                                                    <h2 class="modal-title fs-5">Cart</h2>--%>
+<%--                                                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>--%>
+<%--                                                </div>--%>
+<%--                                                <div class="modal-body">--%>
+<%--                                                    <div class="shopping-cart">--%>
+<%--                                                        <div class="shopping-cart-content">--%>
+<%--                                                            <div class="mini-cart cart-list p-0 mt-3">--%>
+<%--                                                                <div class="mini-cart-item d-flex border-bottom pb-3">--%>
+<%--                                                                    <div class="col-lg-2 col-md-3 col-sm-2 me-4">--%>
+<%--                                                                        <a href="#" title="product-image">--%>
+<%--                                                                            <img src="images/product/" class="img-fluid" alt="single-product-item">--%>
+<%--                                                                        </a>--%>
+<%--                                                                    </div>--%>
+<%--                                                                    <div class="col-lg-9 col-md-8 col-sm-8">--%>
+<%--                                                                        <div class="product-header d-flex justify-content-between align-items-center mb-3">--%>
+<%--                                                                            <h4 class="product-title fs-6 me-5"></h4>--%>
+<%--                                                                            <a href="" class="remove" aria-label="Remove this item" data-product_id="11913"--%>
+<%--                                                                               data-cart_item_key="abc" data-product_sku="">--%>
+<%--                                                                                <svg class="close">--%>
+<%--                                                                                    <use xlink:href="#close"></use>--%>
+<%--                                                                                </svg>--%>
+<%--                                                                            </a>--%>
+<%--                                                                        </div>--%>
+<%--                                                                        <div class="quantity-price d-flex justify-content-between align-items-center">--%>
+<%--                                                                            <div class="input-group product-qty">--%>
+<%--                                                                                <button type="button"--%>
+<%--                                                                                        class="quantity-left-minus btn btn-light rounded-0 rounded-start btn-number"--%>
+<%--                                                                                        data-type="minus">--%>
+<%--                                                                                    <svg width="16" height="16">--%>
+<%--                                                                                        <use xlink:href="#minus"></use>--%>
+<%--                                                                                    </svg>--%>
+<%--                                                                                </button>--%>
+<%--                                                                                <input type="text" name="quantity" class="form-control input-number quantity" value="1">--%>
+<%--                                                                                <button type="button" class="quantity-right-plus btn btn-light rounded-0 rounded-end btn-number"--%>
+<%--                                                                                        data-type="plus">--%>
+<%--                                                                                    <svg width="16" height="16">--%>
+<%--                                                                                        <use xlink:href="#plus"></use>--%>
+<%--                                                                                    </svg>--%>
+<%--                                                                                </button>--%>
+<%--                                                                            </div>--%>
+<%--                                                                            <div class="price-code">--%>
+<%--                                                                                <span class="product-price fs-6">$99</span>--%>
+<%--                                                                            </div>--%>
+<%--                                                                        </div>--%>
+<%--                                                                    </div>--%>
+<%--                                                                </div>--%>
+<%--                                                            </div>--%>
+
+<%--                                                            <div class="mini-cart-total d-flex justify-content-between py-4">--%>
+<%--                                                                <span class="fs-6">Subtotal:</span>--%>
+<%--                                                                <span class="special-price-code">--%>
+<%--                                                                      <span class="price-amount amount fs-6" style="opacity: 1;">--%>
+<%--                                                                        <bdi>--%>
+<%--                                                                          <span class="price-currency-symbol">$</span>198.00 </bdi>--%>
+<%--                                                                      </span>--%>
+<%--                                                                    </span>--%>
+<%--                                                            </div>--%>
+<%--                                                            <div class="modal-footer my-4 justify-content-center">--%>
+<%--                                                                <a href="/View-Cart/${sessionScope.id}"><button type="button" class="btn btn-red hvr-sweep-to-right dark-sweep">View Cart</button></a>--%>
+<%--                                                                <button type="button"--%>
+<%--                                                                        class="btn btn-outline-gray hvr-sweep-to-right dark-sweep">Checkout</button>--%>
+<%--                                                            </div>--%>
+<%--                                                        </div>--%>
+<%--                                                    </div>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </div>--%>
                                 </ul>
                             </div>
                         </li>
@@ -225,10 +323,5 @@
         </div>
     </nav>
 </header>
-<script src="${pageContext.request.contextPath}/js/HomePage/jquery-1.11.0.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/HomePage/bootstrap.bundle.min.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/HomePage/plugins.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/HomePage/script.js"></script>
 </body>
 </html>

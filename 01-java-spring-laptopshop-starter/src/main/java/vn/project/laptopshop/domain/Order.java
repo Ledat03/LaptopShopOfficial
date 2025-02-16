@@ -11,20 +11,14 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long orderid;
+    private long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-    private Double totalprice;
-
+    private Double totalPrice;
+    private String receiverName;
+    private String receiverPhone;
+    private String receiverAddress;
     @OneToMany(mappedBy = "order")
     List<OrderDetail> orderDetails;
-
-    public Order(){}
-
-    public Order(long orderid,User userid,Double totalprice) {
-        this.orderid = orderid;
-        this.user = userid;
-        this.totalprice = totalprice;
-    }
-    }
+}

@@ -1,10 +1,12 @@
 package vn.project.laptopshop.controller.Admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import vn.project.laptopshop.domain.Role;
 import vn.project.laptopshop.domain.User;
 import vn.project.laptopshop.service.MyService;
 import vn.project.laptopshop.service.UploadService;
@@ -43,7 +45,8 @@ public class UserController {
 
     @PostMapping(value = "/admin/user/confirmation")
     public String UserCreate(@RequestParam("fileImg") MultipartFile file,@ModelAttribute User user){
-        myService.SaveRole(user.getRole());
+        Role role = myService.findRoleById(user.getRole().getId());
+        user.setRole(role);
         String avatar =  uploadService.handleUpload(file,"avatar");
         String password = passwordEncoder.encode(user.getPassword());
         user.setAvatar(avatar);
@@ -61,7 +64,6 @@ public class UserController {
             newInfo.setAddress(user.getAddress());
         }
         this.myService.SaveUser(newInfo);
-        model.addAttribute("Notice","Sửa dữ liệu thành công !");
         return "redirect:/admin/user";
     }
 

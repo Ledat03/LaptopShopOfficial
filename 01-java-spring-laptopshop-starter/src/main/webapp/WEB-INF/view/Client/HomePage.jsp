@@ -1,5 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="vn.project.laptopshop.domain.Product" %>
+<%@ page import="vn.project.laptopshop.domain.User" %>
+<%@ page import="vn.project.laptopshop.domain.CartDetail" %>
 <html>
 <head>
     <title>Ministore</title>
@@ -12,7 +14,6 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link rel="stylesheet" type="text/css" href="css/HomePage/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/HomePage/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +92,7 @@
                 <div class="icon-box d-flex">
                     <div class="icon-box-icon pe-3 pb-3">
                         <svg class="quality">
-                            <use xlink:href="#quality" />
+                            <use xlink:href="#quality"/>
                         </svg>
                     </div>
                     <div class="icon-box-content">
@@ -141,6 +142,7 @@
             <div class="swiper product-swiper">
                 <div class="swiper-wrapper">
                     <%
+                        String FullName = (String) request.getAttribute("user");
                         List<Product> PrLists = (List<Product>) request.getAttribute("PrLists");
                         for(Product Prlist : PrLists){
                             if(Prlist.getTarget().equals("Phone")){
@@ -148,18 +150,26 @@
                     <div class="swiper-slide">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <img src="images/product/<%=Prlist.getImage()%>" alt="product-item" class="img-fluid">
+                                <a href="/Product/Detail/<%=Prlist.getId() %>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" class="img-fluid"></a>
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
-                                    <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                                    <form action="/add-to-cart/<%= Prlist.getId()%>" method="post">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                        <button class="btn btn-medium btn-black">
+                                            ADD TO CART
+                                            <svg class="cart-outline">
+                                                <use xlink:href="#cart-outline"></use>
+                                            </svg>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                                 <h3 class="card-title text-uppercase">
-                                    <a href="#"><%=Prlist.getNameproduct()%></a>
+                                    <a href="/Product/Detail/<%=Prlist.getId()%>"><%=Prlist.getNameproduct()%></a>
                                 </h3>
-                                <span class="item-price text-primary">$<%=Prlist.getPrice()%></span>
+                                <span class="item-price">$<%=Prlist.getPrice()%></span>
                             </div>
                         </div>
                     </div>
@@ -189,18 +199,26 @@
                     <div class="swiper-slide">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <a><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" height="270" width="270" style="object-fit: contain"></a>
+                                <a href="/Product/Detail/<%=Prlist.getId()%>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" height="270" width="270" style="object-fit: contain"></a>
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
-                                    <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
+                                    <form action="/add-to-cart/<%= Prlist.getId()%>" method="post">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                        <button class="btn btn-medium btn-black">
+                                            ADD TO CART
+                                            <svg class="cart-outline">
+                                                <use xlink:href="#cart-outline"></use>
+                                            </svg>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                                 <h3 class="card-title text-uppercase">
-                                    <a href="#"><%= Prlist.getNameproduct() %></a>
+                                    <a href="/Product/Detail/<%=Prlist.getId()%>"><%= Prlist.getNameproduct() %></a>
                                 </h3>
-                                <span class="item-price text-primary">$<%= Prlist.getPrice()%></span>
+                                <span class="item-price">$<%= Prlist.getPrice()%></span>
                             </div>
                         </div>
                     </div>

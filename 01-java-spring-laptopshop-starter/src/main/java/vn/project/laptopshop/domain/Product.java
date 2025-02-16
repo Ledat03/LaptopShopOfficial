@@ -3,6 +3,8 @@ package vn.project.laptopshop.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "products")
@@ -21,6 +23,9 @@ public class Product {
     private String sold;
     private String factory;
     private String target;
+
+    @OneToMany(mappedBy = "product")
+    private List<CartDetail> cartDetails;
 
 
     public Product() {};

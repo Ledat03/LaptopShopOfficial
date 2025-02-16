@@ -62,9 +62,9 @@
                     <div class="form-group" style="display: flex;">
                         <div class="mb-3 col-md-6 mx-2">
                             <label class="text-light">Role</label>
-                            <form:select path="role.rolename" name="role" class="form-control">
-                                <form:option value="admin">Admin</form:option>
-                                <form:option value="user">User</form:option>
+                            <form:select path="role.id" name="role" class="form-control">
+                                <form:option value="1">Admin</form:option>
+                                <form:option value="2">User</form:option>
                             </form:select>
                         </div>
                         <div class="mb-3 col-md-6 mx-2">

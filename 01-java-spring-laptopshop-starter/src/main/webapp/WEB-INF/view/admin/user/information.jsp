@@ -44,7 +44,7 @@
                     <tr >
                         <td class="bg-dark text-light"><p><%= InfoU.getUser_id()%></p></td>
                         <td class="bg-dark text-light"><p><%= InfoU.getEmail()%></p></td>
-                        <td class="bg-dark text-light"<p><%= InfoU.getFullName()%></p></td>
+                        <td class="bg-dark text-light"><p><%= InfoU.getFullName()%></p></td>
                         <td class="bg-dark">
                             <div class="btn-group mx-5">
                                 <a href="/admin/user/change/<%= InfoU.getUser_id() %>"><button class="btn btn-warning mx-3">Change</button></a>
