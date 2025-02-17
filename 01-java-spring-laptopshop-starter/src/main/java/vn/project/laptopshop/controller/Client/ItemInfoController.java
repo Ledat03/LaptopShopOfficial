@@ -31,7 +31,7 @@ public class ItemInfoController {
     public String Detail(Model model , @PathVariable int id) {
         Product DetailProduct = productService.getProduct(id);
         model.addAttribute("DetailProduct", DetailProduct);
-        return "Client/Detail";
+        return "Client/Product/Test";
     }
     @PostMapping("/add-to-cart/{id}")
     public String AddToCart(Model model, @PathVariable int id, HttpServletRequest request, Authentication authentication) {

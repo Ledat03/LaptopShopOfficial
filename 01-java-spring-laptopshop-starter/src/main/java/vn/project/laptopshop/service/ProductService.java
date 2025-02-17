@@ -1,6 +1,8 @@
 package vn.project.laptopshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vn.project.laptopshop.domain.Cart;
 import vn.project.laptopshop.domain.CartDetail;
@@ -102,6 +104,8 @@ public class ProductService {
             }
         }
     }
-
+    public Page<Product> findALlProducts(Pageable pageable) {
+        return this.productRepository.findAll(pageable);
+    }
 
 }

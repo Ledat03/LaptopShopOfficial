@@ -1,5 +1,8 @@
 package vn.project.laptopshop.controller.Admin;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +23,13 @@ public class ProductController {
         this.uploadService = uploadService;
     }
     @RequestMapping("/admin/product")
-    public String GetProductPage(Model model) {
-        List<Product> ProductList =  productService.getAllProducts();
-        model.addAttribute("ProductList", ProductList);
+    public String GetProductPage(Model model,@RequestParam("page") int page) {
+        Pageable pageable = PageRequest.of(page,5);
+        Page<Product> ProductList =  productService.findALlProducts(pageable);
+        List<Product> productList = ProductList.getContent();
+        model.addAttribute("ProductList", productList);
+        model.addAttribute("CurrentPage", page);
+        model.addAttribute("totalPages", ProductList.getTotalPages());
         return "admin/product/InfoPage";
     }
 
