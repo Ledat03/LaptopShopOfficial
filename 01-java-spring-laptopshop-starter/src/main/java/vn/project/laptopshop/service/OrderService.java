@@ -39,7 +39,7 @@ public class OrderService {
             od.setQuantity(cartDetail.getQuantity());
             od.setTotalPrice(cartDetail.getPrice());
             int CheckedProduct = cartDetail.getQuantity();
-            cartDetail.setQuantity(cartDetail.getQuantity() - CheckedProduct);
+            cart.setSumQuantity(cart.getSumQuantity() - CheckedProduct);
             this.cartDetailRepository.deleteById(cartDetail.getId());
             this.orderDetailRepository.save(od);
         }

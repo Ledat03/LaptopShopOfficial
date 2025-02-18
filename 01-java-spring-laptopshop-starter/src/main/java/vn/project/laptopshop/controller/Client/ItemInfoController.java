@@ -28,17 +28,18 @@ public class ItemInfoController {
     }
 
     @RequestMapping("/Product/Detail/{id}")
-    public String Detail(Model model , @PathVariable int id) {
+    public String Detail(Model model , @PathVariable int id,@RequestParam(value = "target",required = false) String target) {
         Product DetailProduct = productService.getProduct(id);
+        List<Product> ProductListByTarget = this.productService.findAllProductByTarget(target);
+        model.addAttribute("ProductListsByTarget", ProductListByTarget);
         model.addAttribute("DetailProduct", DetailProduct);
-        return "Client/Product/Test";
+        return "Client/Product/Detail";
     }
     @PostMapping("/add-to-cart/{id}")
     public String AddToCart(Model model, @PathVariable int id, HttpServletRequest request, Authentication authentication) {
-        long productId = id;
         HttpSession session = request.getSession();
         String email = (String) authentication.getName();
-        productService.addProductToCart(productId,email);
+        productService.addProductToCart(id,email);
         User user = myService.findByEmail(email);
         Cart cart = productService.getCartByUser(user);
         List<CartDetail> ListCartDetail = cart == null ? new ArrayList<CartDetail>() : productService.getCartDetail(cart.getId());
@@ -46,6 +47,17 @@ public class ItemInfoController {
         return "redirect:/";
     }
 
+    @PostMapping("/add-to-cart/productList/{id}")
+    public String AddToCartFormProductList(Model model, @PathVariable int id, HttpServletRequest request, Authentication authentication,HttpSession session) {
+        session = request.getSession();
+        String email = (String) authentication.getName();
+        productService.addProductToCart(id,email);
+        User user = myService.findByEmail(email);
+        Cart cart = productService.getCartByUser(user);
+        List<CartDetail> ListCartDetail = cart == null ? new ArrayList<CartDetail>() : productService.getCartDetail(cart.getId());
+        model.addAttribute("CartDetails", ListCartDetail);
+        return "redirect:/Explore";
+    }
     @RequestMapping("/View-Cart")
     public String ViewCart(Model model, Authentication authentication) {
         User user = myService.findByEmail(authentication.getName());

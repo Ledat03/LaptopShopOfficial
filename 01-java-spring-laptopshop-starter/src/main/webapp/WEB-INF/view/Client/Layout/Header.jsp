@@ -140,25 +140,19 @@
 
         <ul class="cat-list">
             <li class="cat-list-item">
-                <a href="#" title="Mobile Phones">Mobile Phones</a>
+                <a href="/Explore?target=Phone" title="Mobile Phones">Mobile Phones</a>
             </li>
             <li class="cat-list-item">
-                <a href="#" title="Smart Watches">Smart Watches</a>
+                <a href="/Explore?target=Wearable" title="Smart Watches">Smart Watches</a>
             </li>
             <li class="cat-list-item">
-                <a href="#" title="Headphones">Headphones</a>
+                <a href="/Explore?target=Headphone" title="Headphones">Headphones</a>
             </li>
             <li class="cat-list-item">
-                <a href="#" title="Accessories">Accessories</a>
+                <a href="/Explore?target=Laptop" title="Laptop">Laptop</a>
             </li>
             <li class="cat-list-item">
-                <a href="#" title="Monitors">Monitors</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Speakers">Speakers</a>
-            </li>
-            <li class="cat-list-item">
-                <a href="#" title="Memory Cards">Memory Cards</a>
+                <a href="/Explore?target=Tablet" title="Tablet">Tablet</a>
             </li>
         </ul>
 

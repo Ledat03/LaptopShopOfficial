@@ -136,7 +136,7 @@
             <div class="display-header d-flex justify-content-between pb-3">
                 <h2 class="display-7 text-dark text-uppercase">Mobile Products</h2>
                 <div class="btn-right">
-                    <a href="/Explore" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+                    <a href="/Explore?target=Phone" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
                 </div>
             </div>
             <div class="swiper product-swiper">
@@ -149,7 +149,7 @@
                     %>
                     <div class="swiper-slide">
                         <div class="product-card position-relative">
-                            <div class="image-holder">
+                            <div class="image-holder" style="height: 250px; width: 250px;">
                                 <a href="/Product/Detail/<%=Prlist.getId() %>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" class="img-fluid"></a>
                             </div>
                             <div class="cart-concern position-absolute">
@@ -166,7 +166,7 @@
                                 </div>
                             </div>
                             <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                                <h3 class="card-title text-uppercase">
+                                <h3 class="card-title text-uppercase" style="margin-top: 6rem;">
                                     <a href="/Product/Detail/<%=Prlist.getId()%>"><%=Prlist.getNameproduct()%></a>
                                 </h3>
                                 <span class="item-price">$<%=Prlist.getPrice()%></span>
@@ -187,19 +187,19 @@
             <div class="display-header d-flex justify-content-between pb-3">
                 <h2 class="display-7 text-dark text-uppercase">Laptop</h2>
                 <div class="btn-right">
-                    <a href="/Explore" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+                    <a href="/Explore?target=Laptop" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
                 </div>
             </div>
             <div class="swiper product-watch-swiper">
                 <div class="swiper-wrapper">
                     <%
                         for(Product Prlist : PrLists){
-                            if(!Prlist.getTarget().equals("Phone")){
+                            if(Prlist.getTarget().equals("Laptop")){
                     %>
                     <div class="swiper-slide">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <a href="/Product/Detail/<%=Prlist.getId()%>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" height="270" width="270" style="object-fit: contain"></a>
+                                <a href="/Product/Detail/<%=Prlist.getId()%>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" height="260" width="260" style="object-fit: contain"></a>
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
@@ -231,6 +231,7 @@
     </div>
     <div class="swiper-pagination position-absolute text-center"></div>
 </section>
+
 <section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge" style="background-position: right; background-repeat: no-repeat;">
     <div class="row d-flex flex-wrap align-items-center">
         <div class="col-md-6 col-sm-12">

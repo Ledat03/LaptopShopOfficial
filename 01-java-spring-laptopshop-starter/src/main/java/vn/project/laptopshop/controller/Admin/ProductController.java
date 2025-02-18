@@ -1,5 +1,6 @@
 package vn.project.laptopshop.controller.Admin;
 
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +24,7 @@ public class ProductController {
         this.uploadService = uploadService;
     }
     @RequestMapping("/admin/product")
-    public String GetProductPage(Model model,@RequestParam("page") int page) {
+    public String GetProductPage(Model model, @RequestParam(value = "page",defaultValue = "0") int page) {
         Pageable pageable = PageRequest.of(page,5);
         Page<Product> ProductList =  productService.findALlProducts(pageable);
         List<Product> productList = ProductList.getContent();

@@ -108,4 +108,7 @@ public class ProductService {
         return this.productRepository.findAll(pageable);
     }
 
+    public List<Product> findAllProductByTarget(String target) {
+        return this.productRepository.findAllByTarget(target);
+    }
 }

@@ -71,12 +71,11 @@
                         <div class="mb-3 col-md-6 mx-4">
                             <label class="text-light">Target</label>
                             <select path="target" name="target" class="form-control">
-                                <option value="Gaming">Gaming</option>
-                                <option value="Study">Sinh Viên-Văn Phòng</option>
-                                <option value="Design">Thiết kế đồ họa</option>
-                                <option value="Thin">Mỏng nhẹ</option>
-                                <option value="Business">Doanh nhân</option>
-                                <option value="Phone">Điện Thoại</option>
+                                <option value="Laptop">Laptop</option>
+                                <option value="Tablet">Tablet</option>
+                                <option value="Wearable">Wearable</option>
+                                <option value="Headphone">Headphone</option>
+                                <option value="Phone">Mobile Phone</option>
                             </select>
                         </div>
                 </div>
