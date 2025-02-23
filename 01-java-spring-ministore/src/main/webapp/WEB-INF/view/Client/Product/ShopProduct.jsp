@@ -1,9 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <%@ page import="java.util.List" %>
     <%@ page import="vn.project.laptopshop.domain.Product" %>
+    <%@ page import="vn.project.laptopshop.domain.DTO.FilterDTO" %>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,12 +74,14 @@
             </a>
         </div>
         <div class="d-flex">
+            <%--@elvariable id="FilterDTO" type="vn.project.laptopshop.domain.DTO.FilterDTO"--%>
+            <form:form action="/Explore" method="get" id="filterForm" modelAttribute="FilterDTO">
             <div class="filter-s-categories">
                 <div class="filter">
                     <Span class="filters">Filters</Span>
-                    <button class="btn-filter border-0" type="button">
+                    <a class="btn-filter border-0 renewFilter" href="/Explore">
                         Clear All
-                    </button>
+                    </a>
                 </div>
                 <div class="filters-general">
                     <div class="brand">
@@ -86,33 +90,71 @@
                     </div>
                     <div id="brandFilterContainer">
                         <div class="form-check d-flex justify-content-start">
-                            <input class="form-check-input mx-1" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input mx-1" type="checkbox" name="FactoryList" id="flexRadioDefault1" value="Asus">
                             <h4 class="form-check-label px-2" for="flexRadioDefault1">
                                 Asus
                             </h4>
                         </div>
                         <div class="form-check d-flex justify-content-start">
-                            <input class="form-check-input mx-1" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                            <input class="form-check-input mx-1" type="checkbox" name="FactoryList" id="flexRadioDefault2" value="Apple">
                             <h4 class="form-check-label px-2" for="flexRadioDefault2">
                                 Apple
                             </h4>
                         </div>
                         <div class="form-check d-flex justify-content-start">
-                            <input class="form-check-input mx-1" type="radio" name="flexRadioDefault" id="flexRadioDefault3" >
-                            <h4 class="form-check-label px-2" for="flexRadioDefault2">
+                            <input class="form-check-input mx-1" type="checkbox" name="FactoryList" id="flexRadioDefault3" value="Acer">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault3">
                                 Acer
                             </h4>
                         </div>
                         <div class="form-check d-flex justify-content-start">
-                            <input class="form-check-input mx-1" type="radio" name="flexRadioDefault" id="flexRadioDefault4" >
-                            <h4 class="form-check-label px-2" for="flexRadioDefault2">
+                            <input class="form-check-input mx-1" type="checkbox" name="FactoryList" id="flexRadioDefault4" value="Dell">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault4">
                                 Dell
                             </h4>
                         </div>
                         <div class="form-check d-flex justify-content-start">
-                            <input class="form-check-input mx-1" type="radio" name="flexRadioDefault" id="flexRadioDefault5" >
-                            <h4 class="form-check-label px-2" for="flexRadioDefault2">
+                            <input class="form-check-input mx-1" type="checkbox" name="FactoryList" id="flexRadioDefault5" value="Lenovo">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault5">
                                 Lenovo
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters-general">
+                    <div class="target">
+                        <div class="brand-title">Type</div>
+                        <img src="/images/HomePage/vuesax-outline-arrow-down19.svg" class="dropdown-icon-target">
+                    </div>
+                     <div id="targetFilterContainer">
+                        <div class="form-check d-flex justify-content-start">
+                            <input class="form-check-input mx-1" type="checkbox" name="TargetList" id="flexRadioDefault6" value="Phone">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault6">
+                                Phone
+                            </h4>
+                        </div>
+                        <div class="form-check d-flex justify-content-start">
+                            <input class="form-check-input mx-1" type="checkbox" name="TargetList" id="flexRadioDefault7" value="Laptop">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault7">
+                                Laptop
+                            </h4>
+                        </div>
+                        <div class="form-check d-flex justify-content-start">
+                            <input class="form-check-input mx-1" type="checkbox" name="TargetList" id="flexRadioDefault8" value="Tablet">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault8">
+                                Tablet
+                            </h4>
+                        </div>
+                        <div class="form-check d-flex justify-content-start">
+                            <input class="form-check-input mx-1" type="checkbox" name="TargetList" id="flexRadioDefault9" value="Wearable">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault9">
+                                Wearable
+                            </h4>
+                        </div>
+                        <div class="form-check d-flex justify-content-start">
+                            <input class="form-check-input mx-1" type="checkbox" name="TargetList" id="flexRadioDefault10" value="Headphone">
+                            <h4 class="form-check-label px-2" for="flexRadioDefault10">
+                                Headphone
                             </h4>
                         </div>
                     </div>
@@ -125,42 +167,25 @@
                     </div>
                     <div id="priceFilterContainer">
                         <div class="setPrice d-flex">
-                            <input type="number" id="minPrice" placeholder="Min">
+                            <input  type="number" id="minPrice" placeholder="Min" name="low"/>
                             <span>_</span>
-                            <input type="number" id="maxPrice" placeholder="Max">
+                            <input  type="number" id="maxPrice" placeholder="Max" name="high"/>
                         </div>
                     </div>
                 </div>
+                <button type="submit" class="SubmitFilterBtn">Submit</button>
             </div>
-            <div class="frame-26087126 col-12 col-md-9">
-                <div class="sort">
-                    <div class="sort-container">
-                        <div class="dropdown-header d-flex">
-                            <span class="sort-label">Sort by:</span>
-                            <div class="current-selection">
-                                <img class="dropdown-arrow" src="/images/HomePage/vuesax-outline-arrow-down19.svg"
-                                     alt="Dropdown arrow">
-                            </div>
-                        </div>
-                        <div class="dropdown-content" id="sortDropdown">
-                            <div class="sort-option" data-sort-key="price" data-sort-order="asc">
-                                Price: Ascending
-                            </div>
-                            <div class="sort-option" data-sort-key="price" data-sort-order="desc">
-                                Price: Descending
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </form:form>
                 <%
-                    List<Product> productListsByTarget = (List<Product>) request.getAttribute("ProductListByPage");
-                    List<Product> productLists = (List<Product>) request.getAttribute("ProductList");
                     String target = (String) request.getAttribute("target");
-                    int currentPage = (int) request.getAttribute("currentPage");
-                    int totalPage = (int) request.getAttribute("TotalPage");
-                    int totalPageAll = (int) request.getAttribute("TotalPageAll");
                 %>
-                <c:if test="<%= target != null %>">
+            <div class="frame-26087126 col-12 col-md-9">
+                <c:if test="<%=(target != null)%>">
+                    <%
+                        List<Product> productListsByTarget = (List<Product>) request.getAttribute("ProductListByTarget");
+                        int totalPageByTarget = (int) request.getAttribute("TotalPageByTarget");
+                        int currentPageByTarget = (int) request.getAttribute("CurrentPageByTarget");
+                    %>
                     <div class="frame-26087120 d-flex flex-md-wrap">
                         <%
                             for (Product product : productListsByTarget) {
@@ -201,21 +226,21 @@
                     <nav class="mx-auto">
                         <ul class="pagination">
                             <li class="page-item">
-                                <c:if test="<%=currentPage != 0%>">
+                                <c:if test="<%=currentPageByTarget != 0%>">
                                     <a class="page-link text-dark" href="#" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </c:if>
                             </li>
                             <%
-                                for (int i = 0;i<totalPage;i++){
+                                for (int i = 0;i<totalPageByTarget;i++){
                             %>
                             <li class="page-item"><a class="page-link text-dark" href="/Explore?target=<%=target%>&page=<%=i%>"><%=i+1%></a></li>
                             <%
                                 }
                             %>
                             <li class="page-item">
-                                <c:if test="<%=currentPage != totalPage - 1%>">
+                                <c:if test="<%=currentPageByTarget != totalPageByTarget - 1%>">
                                     <a class="page-link text-dark" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
@@ -224,7 +249,17 @@
                         </ul>
                     </nav>
                 </c:if>
-                <c:if test="<%=target == null%>">
+                <%
+                    String name = (String) request.getAttribute("name");
+                    String Url = (String) request.getAttribute("QueryURL");
+                %>
+                <c:if test="<%=(target == null && name == null)%>">
+                    <%
+                        List<Product> productLists = (List<Product>) request.getAttribute("ProductList");
+                        int totalPageAll = (int) request.getAttribute("TotalPageAll");
+                        int currentPageAll = (int) request.getAttribute("CurrentPageAll");
+
+                    %>
                     <div class="frame-26087120 d-flex flex-md-wrap">
                         <%
                             for (Product product : productLists) {
@@ -266,28 +301,107 @@
                     <nav class="mx-auto">
                         <ul class="pagination">
                             <li class="page-item">
-                                <c:if test="<%=currentPage != 0%>">
-                                    <a class="page-link text-dark" href="#" aria-label="Previous">
+                                <c:if test="<%=currentPageAll != 0%>">
+                                    <a class="page-link text-dark" href="/Explore?page=<%= currentPageAll - 1%><%=Url%>"
+                                       aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </c:if>
                             </li>
                             <%
-                                for (int i = 0;i<totalPageAll;i++){
+                                for (int i = 0; i < totalPageAll; i++) {
                             %>
-                            <li class="page-item"><a class="page-link text-dark" href="/Explore?page=<%=i%>"><%=i+1%></a></li>
+                            <li class="page-item">
+                                <a class="page-link text-dark" href="/Explore?page=<%=i%><%=Url%>"><%=i+1%></a>
+                            </li>
                             <%
                                 }
                             %>
                             <li class="page-item">
-                                <c:if test="<%=currentPage != totalPageAll - 1%>">
-                                    <a class="page-link text-dark" href="#" aria-label="Next">
+                                <c:if test="<%=currentPageAll != totalPageAll - 1%>">
+                                    <a class="page-link text-dark" href="/Explore?page=<%= currentPageAll + 1%><%=Url%>" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </c:if>
                             </li>
                         </ul>
                     </nav>
+
+                </c:if>
+                <c:if test="<%=(name != null)%>">
+                    <%
+                        List<Product> productListByName = (List<Product>) request.getAttribute("ProductListByName");
+                        int totalPageByName = (int) request.getAttribute("TotalPageByName");
+                        int currentPageByName = (int) request.getAttribute("CurrentPageByName");
+                    %>
+                    <div class="frame-26087120 d-flex flex-md-wrap">
+                        <%
+                            for (Product product : productListByName) {
+                        %>
+                        <div class="product-card">
+                            <img src="/images/product/<%= product.getImage()%>" class="image"/>
+                            <a href="/Product/Detail/<%=product.getId()%>?target=<%=product.getTarget()%>">
+                                <h5 class="title"><%= product.getNameproduct()%></h5>
+                                <span class="title title-factory text-dark"><%= product.getFactory()%></span>
+                            </a>
+                            <div class="info">
+                                <div class="price-heart">
+                                    <div class="button2">
+                                        <div class="vuesax-outline-shopping-cart">
+                                            <img class="vuesax-outline-shopping-cart2"
+                                                 src="/images/HomePage/vuesax-outline-shopping-cart1.svg"/>
+                                        </div>
+                                        <form action="/add-to-cart/productList/<%= product.getId()%>" method="post">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <button type="submit" style="border: none; background: none;">Add to cart
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="price-rate">
+                                        <div class="price3">
+                                            <div class="frame3">
+                                                <p class="new-price">$<%= product.getPrice()%>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %>
+                    </div>
+                    <nav class="mx-auto">
+                        <ul class="pagination">
+                            <li class="page-item">
+
+                                <c:if test="<%=currentPageByName != 0%>">
+                                    <a class="page-link text-dark" href="/Explore?page=<%= currentPageByName - 1%><%=Url%>"
+                                       aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </c:if>
+                            </li>
+                            <%
+                                for (int i = 0; i < totalPageByName; i++) {
+                            %>
+                            <li class="page-item">
+                                <a class="page-link text-dark" href="/Explore?page=<%=i%><%=Url%>"><%=i+1%></a>
+                            </li>
+                            <%
+                                }
+                            %>
+                            <li class="page-item">
+                                <c:if test="<%=currentPageByName != totalPageByName - 1%>">
+                                    <a class="page-link text-dark" href="/Explore?page=<%= currentPageByName + 1%><%=Url%>" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </c:if>
+                            </li>
+                        </ul>
+                    </nav>
+
                 </c:if>
             </div>
         </div>

@@ -20,12 +20,13 @@ body {
 .product-categories:hover {
   background: #f5f5f5;
 }
-
+/*.filters-general-target{{*/
+/*  display: flex;*/
+/*}*/
 /* Bộ lọc */
 .filter {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
 }
 
 .brand-title, .price-title {
@@ -833,6 +834,21 @@ input {
 }
 .rotated {
   transform: rotate(180deg);
+}
+.SubmitFilterBtn{
+  margin: 1rem;
+  border: 1px solid ;
+  height: 3rem;
+  background: #FFFFFF;
+
+}
+
+.target {
+  background: var(--white, #ffffff);
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .brand {
   background: var(--white, #ffffff);

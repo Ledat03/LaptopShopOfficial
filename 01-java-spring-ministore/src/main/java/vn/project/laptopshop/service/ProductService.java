@@ -1,16 +1,15 @@
 package vn.project.laptopshop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import vn.project.laptopshop.domain.Cart;
-import vn.project.laptopshop.domain.CartDetail;
-import vn.project.laptopshop.domain.Product;
-import vn.project.laptopshop.domain.User;
+import vn.project.laptopshop.domain.*;
+import vn.project.laptopshop.domain.DTO.FilterDTO;
 import vn.project.laptopshop.repository.CartDetailRepository;
 import vn.project.laptopshop.repository.CartRepository;
 import vn.project.laptopshop.repository.ProductRepository;
+import vn.project.laptopshop.service.Specification.ProductSpecification;
 
 import java.util.List;
 import java.util.Optional;
@@ -73,15 +72,6 @@ public class ProductService {
 
         }
     }
-
-    public boolean isExsitCart(User user) {
-        return this.cartRepository.existsByUser(user);
-    }
-
-    public Cart getCart(long user_id) {
-        return cartRepository.findById(user_id);
-    }
-
     public Cart getCartByUser(User user) {
         return cartRepository.findByUser(user);
     }
@@ -104,14 +94,19 @@ public class ProductService {
             }
         }
     }
-    public Page<Product> findALlProducts(Pageable pageable) {
+    public Page<Product> findAllProducts(Pageable pageable) {
         return this.productRepository.findAll(pageable);
     }
-
     public Page<Product> findAllProductByTargetAndPagination(String target, Pageable pageable) {
         return this.productRepository.findAllByTarget(target, pageable);
     }
     public List<Product> findAllProductByTarget(String target) {
         return this.productRepository.findAllByTarget(target);
+    }
+    public Page<Product> findAllProductsWithName(Pageable pageable,String name) {
+        return this.productRepository.findAll(ProductSpecification.queryByName(name),pageable);
+    }
+    public Page<Product> findAllProductsByFilter(Pageable pageable, FilterDTO filterDTO) {
+        return  this.productRepository.findAll(ProductSpecification.queryByFilter(filterDTO),pageable);
     }
 }

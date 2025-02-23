@@ -14,6 +14,7 @@ import vn.project.laptopshop.service.ProductService;
 import vn.project.laptopshop.service.UploadService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -24,9 +25,10 @@ public class ProductController {
         this.uploadService = uploadService;
     }
     @RequestMapping("/admin/product")
-    public String GetProductPage(Model model, @RequestParam(value = "page",defaultValue = "0") int page) {
+    public String GetProductPage(Model model, @RequestParam(value = "page",defaultValue = "0") Optional<Integer> optionalPage) {
+        int page = optionalPage.isPresent() ? optionalPage.get() : 0;
         Pageable pageable = PageRequest.of(page,5);
-        Page<Product> ProductList =  productService.findALlProducts(pageable);
+        Page<Product> ProductList =  productService.findAllProducts(pageable);
         List<Product> productList = ProductList.getContent();
         model.addAttribute("ProductList", productList);
         model.addAttribute("CurrentPage", page);

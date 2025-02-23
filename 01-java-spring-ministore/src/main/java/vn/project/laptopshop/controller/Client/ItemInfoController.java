@@ -44,7 +44,7 @@ public class ItemInfoController {
         Cart cart = productService.getCartByUser(user);
         List<CartDetail> ListCartDetail = cart == null ? new ArrayList<CartDetail>() : productService.getCartDetail(cart.getId());
         model.addAttribute("CartDetails", ListCartDetail);
-        return "redirect:/";
+        return "redirect:/View-Cart";
     }
 
     @PostMapping("/add-to-cart/productList/{id}")
@@ -56,7 +56,7 @@ public class ItemInfoController {
         Cart cart = productService.getCartByUser(user);
         List<CartDetail> ListCartDetail = cart == null ? new ArrayList<CartDetail>() : productService.getCartDetail(cart.getId());
         model.addAttribute("CartDetails", ListCartDetail);
-        return "redirect:/Explore";
+        return "redirect:/View-Cart";
     }
     @RequestMapping("/View-Cart")
     public String ViewCart(Model model, Authentication authentication) {

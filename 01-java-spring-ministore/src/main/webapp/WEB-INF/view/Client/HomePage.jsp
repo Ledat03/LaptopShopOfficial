@@ -150,7 +150,7 @@
                     <div class="swiper-slide">
                         <div class="product-card position-relative">
                             <div class="image-holder" style="height: 250px; width: 250px;">
-                                <a href="/Product/Detail/<%=Prlist.getId() %>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" class="img-fluid"></a>
+                                <a href="/Product/Detail/<%=Prlist.getId()%>?target=<%=Prlist.getTarget()%>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" class="img-fluid"></a>
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
@@ -199,7 +199,7 @@
                     <div class="swiper-slide">
                         <div class="product-card position-relative">
                             <div class="image-holder">
-                                <a href="/Product/Detail/<%=Prlist.getId()%>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" height="260" width="260" style="object-fit: contain"></a>
+                                <a href="/Product/Detail/<%=Prlist.getId()%>?target=<%=Prlist.getTarget()%>"><img src="images/product/<%=Prlist.getImage()%>" alt="product-item" height="260" width="260" style="object-fit: contain"></a>
                             </div>
                             <div class="cart-concern position-absolute">
                                 <div class="cart-button d-flex">
