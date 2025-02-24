@@ -25,10 +25,12 @@
     <link rel="stylesheet" type="text/js" href="/js/HomePage/Detail/script.js">
     <link rel="stylesheet" type="text/css" href="css/HomePage/style.css">
 </head>
-<body>
-<div class="container-fluid col-12 col-md-6 col-lg-4 col-xl-3 my-xxl-5">
+<body class="body-register">
+
+<div class="container-fluid col-12 col-md-6 RegisterForm">
     <div class="text-center">
-        <label class="">Register</label>
+        <a href="/"><img src=" /images/HomePage/main-logo.png" class="logo"></a>
+        <h3 class=""><strong>Register</strong></h3>
     </div>
     <%--@elvariable id="RegisterUser" type="vn.project.laptopshop.domain.DTO.RegisterDTO"--%>
     <form:form action="/RegisterConfirm" modelAttribute="RegisterUser" methodName="POST">
@@ -70,7 +72,7 @@
                 <p>${ErrorPassword}</p>
 
             </div>
-            <div>
+            <div class="register-footer">
                 <button type="submit" class="btn btn-primary">Register</button>
                 <a href="/login">Already have an account ?</a>
             </div>

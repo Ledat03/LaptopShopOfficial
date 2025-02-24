@@ -61,16 +61,18 @@
                     <div class="form-group" style="display: flex;">
                         <div class="mb-3 col-md-6">
                             <label class="text-light">Factory</label>
-                            <select path="factory" name="factory" class="form-control">
+                            <select name="factory" class="form-control">
                                 <option value="Apple">Apple</option>
                                 <option value="Samsung">Samsung</option>
+                                <option value="Dell">Dell</option>
                                 <option value="Acer">Acer</option>
                                 <option value="Asus">Asus</option>
+                                <option value="Lenovo">Lenovo</option>
                             </select>
                         </div>
                         <div class="mb-3 col-md-6 mx-4">
                             <label class="text-light">Target</label>
-                            <select path="target" name="target" class="form-control">
+                            <select name="target" class="form-control">
                                 <option value="Laptop">Laptop</option>
                                 <option value="Tablet">Tablet</option>
                                 <option value="Wearable">Wearable</option>

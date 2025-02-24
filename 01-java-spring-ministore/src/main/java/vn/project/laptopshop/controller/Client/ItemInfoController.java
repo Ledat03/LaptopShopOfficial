@@ -82,8 +82,7 @@ public class ItemInfoController {
         return "Client/Cart/OrderDetail";
     }
     @PostMapping("/confirmCheckout")
-    public String confirmCheckout(@RequestParam("total") double total, @RequestParam("fullname") String fullName, @RequestParam("phone") String phone, @RequestParam("address") String address, HttpSession session
-    ) {
+    public String confirmCheckout(@RequestParam("total") double total, HttpSession session,CheckoutDTO checkoutDTO) {
         String email = (String) session.getAttribute("email");
         User user = myService.findByEmail(email);
         Cart cart = productService.getCartByUser(user);
@@ -92,7 +91,7 @@ public class ItemInfoController {
         }
         List<CartDetail> cartDetailList = productService.getCartDetail(cart.getId());
         Order newOrder = new Order();
-        this.orderService.addOrder(newOrder,user,total,fullName,phone,address);
+        this.orderService.addOrder(newOrder,user,total,checkoutDTO);
         this.orderService.addOrderDetail(newOrder,cartDetailList,cart);
         return "Client/Cart/Thankyou";
     }

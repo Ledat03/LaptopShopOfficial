@@ -233,7 +233,7 @@
                         </div>
                         <div class="info3">
                             <span class="title">
-                                <%=TargetProductLists.get(i).getNameproduct()%>
+                                <a href="/Product/Detail/<%=TargetProductLists.get(i).getId()%>?target=<%=TargetProductLists.get(i).getTarget()%>"><%=TargetProductLists.get(i).getNameproduct()%></a>
                             </span>
                             <div class="price-heart">
                                 <div class="price3">

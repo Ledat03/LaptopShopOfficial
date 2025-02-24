@@ -24,21 +24,22 @@
     <link rel="stylesheet" type="text/js" href="/js/HomePage/jquery-1.11.0.min.js">
     <link rel="stylesheet" type="text/js" href="/js/HomePage/Detail/plugins.js">
     <link rel="stylesheet" type="text/js" href="/js/HomePage/Detail/script.js">
-    <link rel="stylesheet" type="text/css" href="css/HomePage/style.css">
 </head>
-<body>
-    <div class="container-fluid col-12 col-md-6 col-lg-4 col-xl-3 my-xxl-5">
+<body class="body-login">
+<div class="loginForm">
+    <div class="Background-login"></div>
+    <div class="container-fluid col-12 col-md-4 Login-Form">
         <div class="text-center">
-            <label class="">Login</label>
+            <a href="/"><img src=" /images/HomePage/main-logo.png" class="logo"></a>
+            <h4><strong>LOG IN</strong></h4>
         </div>
         <form:form action="/login">
             <div class="form-group">
-
-                <div class="">
+                <div class="loginElement">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" placeholder="Username"></input>
                 </div>
-                <div>
+                <div class="loginElement">
                     <label>Password</label>
                     <input type="password" name="password" class="form-control" placeholder="Password"></input>
                     <a href="">Forgot Password?</a>
@@ -49,11 +50,13 @@
                 <div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </div>
-                <div>
+                <div class="loginElement">
                     <button type="submit" class="btn btn-primary">Sign In</button>
                     <a href="/register">Don't have an account yet?</a>
                 </div>
             </div>
         </form:form>
     </div>
+</div>
+
 </body>

@@ -56,6 +56,7 @@
                                 <a href="/admin/product/InfoProduct/<%= ProductList.getId()%>" ><button class="btn btn-warning mx-2" >Infomation</button></a>
                                 <a href="/admin/product/EditProduct/<%= ProductList.getId()%>"><button class="btn btn-warning mx-4" >Edit</button></a>
                                 <form action="/admin/product/DeleteProduct/<%= ProductList.getId()%>" method="post" style="display: inline;">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                     <button class="btn btn-warning mx-2 submit-delete" type="submit">Delete</button>
                                 </form>
                             </td>
@@ -100,12 +101,14 @@
 
 </div>
 <script>
-    let deletebutton = document.querySelector('.submit-delete')
+    let deleteButtons = document.querySelectorAll('.submit-delete');
 
-    deletebutton.addEventListener('click', function (e) {
-        if (!confirm('Bạn có chắc muốn xóa thông tin hay không ?')) {
-            e.preventDefault()
-        }
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function (e) {
+            if (!confirm('Bạn có chắc muốn xóa thông tin hay không ?')) {
+                e.preventDefault();
+            }
+        });
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

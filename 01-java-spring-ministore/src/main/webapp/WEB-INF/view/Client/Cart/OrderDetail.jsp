@@ -49,19 +49,20 @@
         </tbody>
     </table>
         <div class="checkout-group w-50 mx-auto mt-5">
-            <form class="form-control d-flex flex-column" method="post" action="/confirmCheckout">
+            <%--@elvariable id="CheckoutDTO" type="vn.project.laptopshop.domain.DTO.FilterDTO"--%>
+            <form:form class="form-control d-flex flex-column" method="post" action="/confirmCheckout" modelAttribute="CheckoutDTO">
                 <span class="text-center"><strong>Checkout Infomation</strong></span>
                 <div class="my-1">
                     <label class="label-style">Name</label>
-                    <input type="text" name="fullname" required/>
+                    <input type="text" name="Fullname" required/>
                 </div>
                 <div class="my-1">
                     <label class="label-style">Phone</label>
-                    <input type="text" name="phone" required/>
+                    <input type="text" name="Phone" required/>
                 </div>
                 <div class="my-1">
                     <label class="label-style">Address</label>
-                    <input type="text" name="address" required/>
+                    <input type="text" name="Address" required/>
                 </div>
             <div class="cart-summary border-0 mt-auto mx-auto">
                 <h4 class="summary-title">Thanh toán khi nhận hàng</h4>
@@ -87,7 +88,7 @@
                 <button class="checkout-btn" type="submit">CHECKOUT</button>
                 <input type="hidden" name="total" value="<%=Total%>">
             </div>
-            </form>
+            </form:form>
             </div>
         </div>
 

@@ -41,6 +41,9 @@ public class ShopListController {
         if(queryURL != null && !queryURL.isBlank()){
             queryURL = queryURL.replace("page="+page,"");
         }
+        if(queryURL == null || queryURL.isBlank()){
+            queryURL = "";
+        }
             Pageable pageable  = PageRequest.of(page, 8);
             Page<Product> productPageAll = productService.findAllProductsByFilter(pageable,filterDTO);
             List<Product> ProductList = productPageAll.getContent();

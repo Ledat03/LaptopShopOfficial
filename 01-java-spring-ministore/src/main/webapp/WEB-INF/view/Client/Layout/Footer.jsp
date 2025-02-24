@@ -12,7 +12,6 @@
                     <div class="col-lg-3 col-sm-6 pb-3">
                         <div class="footer-menu">
                             <img src="${pageContext.request.contextPath}/images/HomePage/main-logo.png" alt="logo">
-                            <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
                             <div class="social-links">
                                 <ul class="d-flex list-unstyled">
                                     <li>
@@ -59,19 +58,19 @@
                             <h5 class="widget-title pb-2">Quick Links</h5>
                             <ul class="menu-list list-unstyled text-uppercase">
                                 <li class="menu-item pb-2">
-                                    <a href="#">Home</a>
+                                    <a href="/test">Home</a>
                                 </li>
                                 <li class="menu-item pb-2">
                                     <a href="#">About</a>
                                 </li>
                                 <li class="menu-item pb-2">
-                                    <a href="#">Shop</a>
+                                    <a href="/Explore">Shop</a>
                                 </li>
                                 <li class="menu-item pb-2">
                                     <a href="#">Blogs</a>
                                 </li>
                                 <li class="menu-item pb-2">
-                                    <a href="#">Contact</a>
+                                    <a href="mailto:">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -101,9 +100,9 @@
                     <div class="col-lg-3 col-sm-6 pb-3">
                         <div class="footer-menu contact-item">
                             <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                            <p>Do you have any queries or suggestions? <a href="mailto:">yourinfo@gmail.com</a>
+                            <p>Do you have any queries or suggestions? <a href="mailto:">ledat12234@gmail.com</a>
                             </p>
-                            <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
+                            <p>If you need support? Just give us a call. <a href="">+84989266087</a>
                             </p>
                         </div>
                     </div>
@@ -133,12 +132,6 @@
                         <img src="${pageContext.request.contextPath}/images/HomePage/mastercard.jpg" alt="mastercard">
                         <img src="${pageContext.request.contextPath}/images/HomePage/paypal.jpg" alt="paypal">
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div class="copyright">
-                    <p>Copyright 2023 MiniStore. Design by <a href="https://templatesjungle.com/">TemplatesJungle</a> Distribution by <a href="https://themewagon.com">ThemeWagon</a>
-                    </p>
                 </div>
             </div>
         </div>

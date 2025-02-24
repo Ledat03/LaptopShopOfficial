@@ -1,7 +1,9 @@
 package vn.project.laptopshop.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import vn.project.laptopshop.domain.*;
+import vn.project.laptopshop.domain.DTO.CheckoutDTO;
 import vn.project.laptopshop.repository.CartDetailRepository;
 import vn.project.laptopshop.repository.CartRepository;
 import vn.project.laptopshop.repository.OrderDetailRepository;
@@ -22,13 +24,19 @@ public class OrderService {
         this.cartDetailRepository = cartDetailRepository;
         this.cartRepository = cartRepository;
     }
+    public List<Order> getOrders() {
+        return orderRepository.findAll();
+    }
 
-    public void addOrder(Order newOrder,User user,double total,String fullName,String phone,String address){
+    public List<OrderDetail> getOrderDetails(long id) {
+        return orderDetailRepository.findByOrderId(id);
+    }
+    public void addOrder(Order newOrder, User user, double total, CheckoutDTO checkoutDTO) {
         newOrder.setUser(user);
         newOrder.setTotalPrice(total);
-        newOrder.setReceiverName(fullName);
-        newOrder.setReceiverPhone(phone);
-        newOrder.setReceiverAddress(address);
+        newOrder.setReceiverName(checkoutDTO.getFullname());
+        newOrder.setReceiverPhone(checkoutDTO.getPhone());
+        newOrder.setReceiverAddress(checkoutDTO.getAddress());
         this.orderRepository.save(newOrder);
     }
     public void addOrderDetail(Order order, List<CartDetail> cartDetailList, Cart cart){
@@ -45,6 +53,18 @@ public class OrderService {
         }
         if(cart.getSumQuantity() < 1 ){
             this.cartRepository.deleteById(cart.getId());
+        }
+    }
+    @Transactional
+    public void deleteOrderAndOrderDetails(long id) {
+        Order tempOrder = this.orderRepository.findOrderById(id);
+        if(tempOrder != null){
+            List<OrderDetail> tempOrderDetails = orderDetailRepository.findByOrderId(id);
+            if(!tempOrderDetails.isEmpty()){
+                this.orderDetailRepository.deleteOrderDetailByOrder(tempOrder);
+
+            }
+            this.orderRepository.deleteById(id);
         }
     }
 }

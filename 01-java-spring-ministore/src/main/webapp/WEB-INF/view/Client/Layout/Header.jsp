@@ -192,14 +192,14 @@
                                                         </div>
                                                     </li>
                                                     <li><a class="dropdown-item" href="#">Setting</a></li>
-                                                    <li><a class="dropdown-item" href="#">History</a></li>
+                                                    <li><a class="dropdown-item" href="#">My Purchase</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider">
                                                     </li>
                                                     <li>
                                                         <form action="/logout" method="POST">
                                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                                            <button class="dropdown-item" type="submit">Log Out</button>
+                                                            <button class="dropdown-item" type="submit">LOG OUT</button>
                                                         </form>
                                                     </li>
                                                 </ul>

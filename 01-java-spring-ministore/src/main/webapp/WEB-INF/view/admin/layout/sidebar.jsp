@@ -65,8 +65,6 @@
             </div>
         </div>
         <div class="sb-sidenav-footer bg-dark">
-            <div class="small">Logged in as:</div>
-            Đạt Lê
         </div>
     </nav>
 </div>
