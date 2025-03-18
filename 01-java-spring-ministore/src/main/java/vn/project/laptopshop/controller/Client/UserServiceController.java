@@ -30,7 +30,6 @@ public class UserServiceController {
 
     @GetMapping("/login")
     public String login(Model model) {
-
         return "Client/UserService/Login";
     }
     @GetMapping("/register")

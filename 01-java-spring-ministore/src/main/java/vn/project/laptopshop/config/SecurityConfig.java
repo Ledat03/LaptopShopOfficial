@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .logout(logout->logout.deleteCookies("JSESSIONID").invalidateHttpSession(true))
                 .exceptionHandling(ex ->ex.accessDeniedPage("/AccessDenied"))
                 .authorizeHttpRequests(authorize -> authorize.dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.INCLUDE).permitAll()
-                .requestMatchers("/login", "/client/**", "/css/**", "/js/**", "/images/**","/","/product/**","/add-to-cart/**","/register","/Explore").permitAll()
+                .requestMatchers("/login", "/client/**", "/css/**", "/js/**", "/images/**","/","/product/**","/add-to-cart/**","/register","/Explore","/RegisterConfirm").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated());
         return http.build();

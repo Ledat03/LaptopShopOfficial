@@ -33,7 +33,7 @@
         <h3 class=""><strong>Register</strong></h3>
     </div>
     <%--@elvariable id="RegisterUser" type="vn.project.laptopshop.domain.DTO.RegisterDTO"--%>
-    <form:form action="/RegisterConfirm" modelAttribute="RegisterUser" methodName="POST">
+    <form:form action="/RegisterConfirm" modelAttribute="RegisterUser" method="POST">
         <c:set var="ErrorPassword">
             <form:errors path="confirmPassword" cssClass="text-danger"/>
         </c:set>
@@ -43,6 +43,7 @@
         <c:set var="ErrorEmail">
             <form:errors path="email" cssClass="text-danger"/>
         </c:set>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <div class="form-group">
             <div class="">
                 <label>Username</label>
@@ -70,13 +71,11 @@
                 <label>Confirm Password</label>
                 <form:input type="password" path="confirmPassword" name="username" class="form-control" placeholder="Confirm Password"/>
                 <p>${ErrorPassword}</p>
-
             </div>
             <div class="register-footer">
                 <button type="submit" class="btn btn-primary">Register</button>
                 <a href="/login">Already have an account ?</a>
             </div>
-
         </div>
     </form:form>
 </div>

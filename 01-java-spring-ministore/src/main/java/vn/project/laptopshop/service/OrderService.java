@@ -62,7 +62,6 @@ public class OrderService {
             List<OrderDetail> tempOrderDetails = orderDetailRepository.findByOrderId(id);
             if(!tempOrderDetails.isEmpty()){
                 this.orderDetailRepository.deleteOrderDetailByOrder(tempOrder);
-
             }
             this.orderRepository.deleteById(id);
         }

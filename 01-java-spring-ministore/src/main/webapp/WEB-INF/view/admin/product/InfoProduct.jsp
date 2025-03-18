@@ -34,7 +34,7 @@
                     <th class="bg-dark text-light">Short Description</th>
                     <th class="bg-dark text-light">Quantity</th>
                     <th class="bg-dark text-light">Sold</th>
-                    <th class="bg-dark text-light">Factory</th>
+                    <th class="bg-dark text-light" >Factory</th>
                     <th class="bg-dark text-light">Target</th>
                     </thead>
                     <tbody>

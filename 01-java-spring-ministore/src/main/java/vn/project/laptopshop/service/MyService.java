@@ -56,10 +56,6 @@ public class MyService {
         return user;
     }
 
-//    public User checkoutDTOtoUser(CheckoutDTO checkoutDTO){
-//
-//    }
-
     public boolean IsExist(String email) {
         return this.userRepository.existsByEmail(email);
     }

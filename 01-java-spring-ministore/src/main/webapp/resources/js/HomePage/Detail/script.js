@@ -1,14 +1,10 @@
 (function ($) {
-
   "use strict";
-
   document.querySelector('.btn-close').addEventListener('click', function() {
     var modalElement = document.getElementById('modallong');
     var modal = bootstrap.Modal.getInstance(modalElement);
     modal.hide();
   });
-
-  // init jarallax parallax
   var initJarallax = function () {
     jarallax(document.querySelectorAll(".jarallax"));
 
@@ -16,21 +12,15 @@
       keepImg: true,
     });
   }
-
-  // input spinner
   var initProductQty = function(){
-
     $('.product-qty').each(function(){
-
       var $el_product = $(this);
       var quantity = 0;
-
       $el_product.find('.quantity-right-plus').click(function(e){
           e.preventDefault();
           var quantity = parseInt($el_product.find('.quantity').val());
           $el_product.find('.quantity').val(quantity + 1);
       });
-
       $el_product.find('.quantity-left-minus').click(function(e){
           e.preventDefault();
           var quantity = parseInt($el_product.find('.quantity').val());
@@ -42,8 +32,6 @@
     });
 
   }
-
-  // init Chocolat light box
 	var initChocolat = function () {
 		Chocolat(document.querySelectorAll('.image-link'), {
 			imageSize: 'contain',
@@ -51,7 +39,6 @@
 		})
 	}
 
-  // Animate Texts
   var initTextFx = function () {
     $('.txt-fx').each(function () {
       var newstr = '';
@@ -75,9 +62,6 @@
       this.innerHTML = newstr;
     });
   }
-
-
-
   $(document).ready(function () {
 
     initProductQty();
@@ -112,7 +96,6 @@
         },
       });
 
-      // homepage 2 slider
       var swiper = new Swiper(".thumb-swiper", {
         direction: 'horizontal',
         slidesPerView: 6,
@@ -139,7 +122,6 @@
 
     }
 
-    // product single page
     var thumb_slider = new Swiper(".product-thumbnail-slider", {
       slidesPerView: 5,
       spaceBetween: 10,
@@ -154,8 +136,6 @@
         },
       },
     });
-
-    // product large
     var large_slider = new Swiper(".product-large-slider", {
       slidesPerView: 1,
       // autoplay: true,
@@ -172,8 +152,7 @@
 
     
 
-  }); // End of a document
-
+  });
   $(window).load(function(){
     $('.preloader').fadeOut();
   });
